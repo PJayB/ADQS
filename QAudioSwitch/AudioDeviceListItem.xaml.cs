@@ -18,18 +18,28 @@ using AudioEndPointControllerWrapper;
 namespace QAudioSwitch
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AudioDeviceListItem.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AudioDeviceListItem : UserControl
     {
-        public MainWindow()
+        public readonly IAudioDevice AudioDevice;
+
+        public AudioDeviceListItem(IAudioDevice device)
         {
             InitializeComponent();
 
-            foreach (var device in AudioController.GetActivePlaybackDevices())
+            NameLabel.Content = device.FriendlyName;
+
+            try
             {
-                ActivePlaybackDevicesListBox.Items.Add(new AudioDeviceListItem(device));
+                IconImage.Source = IconResourceCache.LoadIconAsBitmap(device.DeviceClassIconPath, true);
             }
+            catch (Exception)
+            {
+                // Disregard errors -- we'll just have to make do without an image
+            }
+
+            AudioDevice = device;
         }
     }
 }

@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="QAudioSwitch.AudioDeviceListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QAudioSwitch"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="300">
+    <Grid Margin="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0" x:Name="IconImage" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Grid.Column="1" x:Name="NameLabel" Content="Device Name" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>
