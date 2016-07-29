@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="Audio Device Quick-Switcher" Height="350" Width="525">
     <Grid>
-        <ListBox x:Name="ActivePlaybackDevicesListBox" SelectionChanged="ActivePlaybackDevicesListBox_SelectionChanged"/>
+        <ListBox x:Name="ActivePlaybackDevicesListBox" SelectionChanged="ActivePlaybackDevicesListBox_SelectionChanged" KeyUp="ActivePlaybackDevicesListBox_KeyUp"/>
     </Grid>
 </Window>

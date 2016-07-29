@@ -43,6 +43,32 @@ namespace QAudioSwitch
             ActivePlaybackDevicesListBox.Focus();
         }
 
+        private void SelectNextActive()
+        {
+            ActivePlaybackDevicesListBox.SelectedIndex = (ActivePlaybackDevicesListBox.SelectedIndex + 1) % ActivePlaybackDevicesListBox.Items.Count;
+        }
+
+        private void ListUpdated()
+        {
+            // If the current selection isn't valid, find the current system default and select that
+            AudioDeviceListItem currentSelection = (AudioDeviceListItem)ActivePlaybackDevicesListBox.SelectedItem;
+            if (currentSelection == null || !currentSelection.AudioDevice.IsDefault(Role.Multimedia))
+            {
+                var items = ActivePlaybackDevicesListBox.Items;
+
+                // Make sure it isn't already in the list
+                for (int i = 0; i < items.Count; ++i)
+                {
+                    AudioDeviceListItem item = (AudioDeviceListItem)items[i];
+                    if (item != null && item.AudioDevice != null && item.AudioDevice.IsDefault(Role.Multimedia))
+                    {
+                        ActivePlaybackDevicesListBox.SelectedItem = item;
+                        break;
+                    }
+                }
+            }
+        }
+
         private void AddAudioDevice(IAudioDevice device)
         {
             // Add the device to the list
@@ -61,11 +87,15 @@ namespace QAudioSwitch
                 }
 
                 items.Add(new AudioDeviceListItem(device));
+
+                ListUpdated();
             }
         }
 
         private void RemoveAudioDevice(IAudioDevice device)
         {
+            bool removed = false;
+
             var items = ActivePlaybackDevicesListBox.Items;
             for (int i = 0; i < items.Count; ++i)
             {
@@ -73,8 +103,12 @@ namespace QAudioSwitch
                 if (item != null && item.AudioDevice != null && item.AudioDevice.Id == device.Id)
                 {
                     items.RemoveAt(i--);
+                    removed = true;
                 }
             }
+
+            if (removed)
+                ListUpdated();
         }
 
         private void AudioController_DeviceStateChanged(object sender, DeviceStateChangedEvent e)
@@ -126,6 +160,15 @@ namespace QAudioSwitch
             {
                 MessageBox.Show("There was an error setting this audio device as the default for playback. " + ex.Message,
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ActivePlaybackDevicesListBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            // Move the selection on by one
+            if (e.Key == Key.Space)
+            {
+                SelectNextActive();
             }
         }
     }
