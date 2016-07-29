@@ -36,14 +36,10 @@ namespace QAudioSwitch
         {
             if (e.device.Id == AudioDevice.Id)
             {
-                this.Dispatcher.BeginInvoke(
-                    System.Windows.Threading.DispatcherPriority.Background, 
-                    new DispatcherOperationCallback(delegate
+                Utils.ScheduleUIAction(Dispatcher, delegate
                     {
                         UpdateDeviceState(e.device, e.newState);
-                        return null;
-                    }), 
-                    null);
+                    });
             }
         }
 

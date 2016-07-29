@@ -30,6 +30,59 @@ namespace QAudioSwitch
             {
                 ActivePlaybackDevicesListBox.Items.Add(new AudioDeviceListItem(device));
             }
+
+            AudioController.DeviceAdded += AudioController_DeviceAdded;
+            AudioController.DeviceRemoved += AudioController_DeviceRemoved;
+        }
+
+        private void AddAudioDevice(IAudioDevice device)
+        {
+            // Add the device to the list
+            if (device.Type == AudioDeviceType.Playback)
+            {
+                var items = ActivePlaybackDevicesListBox.Items;
+
+                // Make sure it isn't already in the list
+                for (int i = 0; i < items.Count; ++i)
+                {
+                    AudioDeviceListItem item = (AudioDeviceListItem)items[i];
+                    if (item != null && item.AudioDevice != null && item.AudioDevice.Id == device.Id)
+                    {
+                        return;
+                    }
+                }
+
+                items.Add(new AudioDeviceListItem(device));
+            }
+        }
+
+        private void RemoveAudioDevice(IAudioDevice device)
+        {
+            var items = ActivePlaybackDevicesListBox.Items;
+            for (int i = 0; i < items.Count; ++i)
+            {
+                AudioDeviceListItem item = (AudioDeviceListItem)items[i];
+                if (item != null && item.AudioDevice != null && item.AudioDevice.Id == device.Id)
+                {
+                    items.RemoveAt(i--);
+                }
+            }
+        }
+
+        private void AudioController_DeviceAdded(object sender, DeviceAddedEvent e)
+        {
+            Utils.ScheduleUIAction(Dispatcher, delegate
+            {
+                AddAudioDevice(e.device);
+            });            
+        }
+
+        private void AudioController_DeviceRemoved(object sender, DeviceRemovedEvent e)
+        {
+            Utils.ScheduleUIAction(Dispatcher, delegate
+            {
+                RemoveAudioDevice(e.device);
+            });
         }
 
         private void ActivePlaybackDevicesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
