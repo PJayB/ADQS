@@ -26,13 +26,21 @@ namespace QAudioSwitch
         {
             InitializeComponent();
 
-            foreach (var device in AudioController.GetAllPlaybackDevices())
+            foreach (var device in AudioController.GetActivePlaybackDevices())
             {
                 ActivePlaybackDevicesListBox.Items.Add(new AudioDeviceListItem(device));
+
+                if (device.IsDefault(Role.Multimedia))
+                {
+                    ActivePlaybackDevicesListBox.SelectedIndex = ActivePlaybackDevicesListBox.Items.Count - 1;
+                }
             }
 
             AudioController.DeviceAdded += AudioController_DeviceAdded;
             AudioController.DeviceRemoved += AudioController_DeviceRemoved;
+            AudioController.DeviceStateChanged += AudioController_DeviceStateChanged;
+
+            ActivePlaybackDevicesListBox.Focus();
         }
 
         private void AddAudioDevice(IAudioDevice device)
@@ -69,6 +77,17 @@ namespace QAudioSwitch
             }
         }
 
+        private void AudioController_DeviceStateChanged(object sender, DeviceStateChangedEvent e)
+        {
+            Utils.ScheduleUIAction(Dispatcher, delegate
+            {
+                if (e.newState == DeviceState.Active)
+                    AddAudioDevice(e.device);
+                else
+                    RemoveAudioDevice(e.device);
+            });
+        }
+
         private void AudioController_DeviceAdded(object sender, DeviceAddedEvent e)
         {
             Utils.ScheduleUIAction(Dispatcher, delegate
@@ -96,7 +115,7 @@ namespace QAudioSwitch
 
             // Set the audio device as default
             IAudioDevice device = item.AudioDevice;
-            if (device == null || device.DeviceState != DeviceState.Active || device.Type != AudioDeviceType.Playback)
+            if (device == null || device.DeviceState != DeviceState.Active || device.Type != AudioDeviceType.Playback || device.IsDefault(Role.Multimedia))
                 return;
 
             try
