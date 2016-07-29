@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AudioEndPointLibrary", "AudioEndPointLibrary", "{90BF114C-0002-4201-9A3D-2EDBBAE82FD8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DefSound", "AudioEndPointLibrary\DefSound\DefSound.vcxproj", "{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AudioEndPointLibrary", "AudioEndPointLibrary\AudioEndPointLibrary\AudioEndPointLibrary.vcxproj", "{521ED36D-A11A-4033-BF96-3C066FE74032}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Audio.EndPoint.Controller.Wrapper", "AudioEndPointLibrary\Audio.EndPoint.Controller.Wrapper\Audio.EndPoint.Controller.Wrapper.vcxproj", "{115BF2B4-B3BE-446D-BA76-348E274258F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prototype", "Prototype\Prototype.csproj", "{CA63551E-6B59-44F9-8806-2775BDE2938F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		AppVeyor|x64 = AppVeyor|x64
+		AppVeyor|x86 = AppVeyor|x86
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.AppVeyor|x64.ActiveCfg = Release|x64
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.AppVeyor|x64.Build.0 = Release|x64
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.AppVeyor|x86.ActiveCfg = Release|Win32
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.AppVeyor|x86.Build.0 = Release|Win32
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.Debug|x64.ActiveCfg = Debug|x64
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.Debug|x64.Build.0 = Debug|x64
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.Debug|x86.ActiveCfg = Debug|Win32
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.Debug|x86.Build.0 = Debug|Win32
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.Release|x64.ActiveCfg = Release|x64
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.Release|x64.Build.0 = Release|x64
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.Release|x86.ActiveCfg = Release|Win32
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7}.Release|x86.Build.0 = Release|Win32
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.AppVeyor|x64.ActiveCfg = AppVeyor|x64
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.AppVeyor|x64.Build.0 = AppVeyor|x64
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.AppVeyor|x86.ActiveCfg = AppVeyor|Win32
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.AppVeyor|x86.Build.0 = AppVeyor|Win32
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.Debug|x64.ActiveCfg = Debug|x64
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.Debug|x64.Build.0 = Debug|x64
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.Debug|x86.ActiveCfg = Debug|Win32
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.Debug|x86.Build.0 = Debug|Win32
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.Release|x64.ActiveCfg = Release|x64
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.Release|x64.Build.0 = Release|x64
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.Release|x86.ActiveCfg = Release|Win32
+		{521ED36D-A11A-4033-BF96-3C066FE74032}.Release|x86.Build.0 = Release|Win32
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.AppVeyor|x64.ActiveCfg = AppVeyor|x64
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.AppVeyor|x64.Build.0 = AppVeyor|x64
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.AppVeyor|x86.ActiveCfg = AppVeyor|Win32
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.AppVeyor|x86.Build.0 = AppVeyor|Win32
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.Debug|x64.ActiveCfg = Debug|x64
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.Debug|x64.Build.0 = Debug|x64
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.Debug|x86.ActiveCfg = Debug|Win32
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.Debug|x86.Build.0 = Debug|Win32
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.Release|x64.ActiveCfg = Release|x64
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.Release|x64.Build.0 = Release|x64
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.Release|x86.ActiveCfg = Release|Win32
+		{115BF2B4-B3BE-446D-BA76-348E274258F7}.Release|x86.Build.0 = Release|Win32
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.AppVeyor|x64.ActiveCfg = Release|x64
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.AppVeyor|x64.Build.0 = Release|x64
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.AppVeyor|x86.ActiveCfg = Release|x86
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.AppVeyor|x86.Build.0 = Release|x86
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.Debug|x64.ActiveCfg = Debug|x64
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.Debug|x64.Build.0 = Debug|x64
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.Debug|x86.ActiveCfg = Debug|x86
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.Debug|x86.Build.0 = Debug|x86
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.Release|x64.ActiveCfg = Release|x64
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.Release|x64.Build.0 = Release|x64
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.Release|x86.ActiveCfg = Release|x86
+		{CA63551E-6B59-44F9-8806-2775BDE2938F}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0EF580FE-B39D-4423-A59C-5B98AB6F39E7} = {90BF114C-0002-4201-9A3D-2EDBBAE82FD8}
+		{521ED36D-A11A-4033-BF96-3C066FE74032} = {90BF114C-0002-4201-9A3D-2EDBBAE82FD8}
+		{115BF2B4-B3BE-446D-BA76-348E274258F7} = {90BF114C-0002-4201-9A3D-2EDBBAE82FD8}
+	EndGlobalSection
+EndGlobal
