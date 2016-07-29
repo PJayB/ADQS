@@ -39,6 +39,7 @@ namespace QAudioSwitch
             AudioController.DeviceAdded += AudioController_DeviceAdded;
             AudioController.DeviceRemoved += AudioController_DeviceRemoved;
             AudioController.DeviceStateChanged += AudioController_DeviceStateChanged;
+            AudioController.DeviceDefaultChanged += AudioController_DeviceDefaultChanged;
 
             ActivePlaybackDevicesListBox.Focus();
         }
@@ -135,6 +136,14 @@ namespace QAudioSwitch
             Utils.ScheduleUIAction(Dispatcher, delegate
             {
                 RemoveAudioDevice(e.device);
+            });
+        }
+
+        private void AudioController_DeviceDefaultChanged(object sender, DeviceDefaultChangedEvent e)
+        {
+            Utils.ScheduleUIAction(Dispatcher, delegate
+            {
+                ListUpdated();
             });
         }
 
