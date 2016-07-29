@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <ListBox x:Name="ActivePlaybackDevicesListBox"/>
+        <ListBox x:Name="ActivePlaybackDevicesListBox" SelectionChanged="ActivePlaybackDevicesListBox_SelectionChanged"/>
     </Grid>
 </Window>

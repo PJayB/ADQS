@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using AudioEndPointControllerWrapper;
+using System.Windows.Threading;
 
 namespace QAudioSwitch
 {
@@ -22,13 +23,34 @@ namespace QAudioSwitch
     /// </summary>
     public partial class AudioDeviceListItem : UserControl
     {
-        public readonly IAudioDevice AudioDevice;
+        public IAudioDevice AudioDevice { get; private set; }
 
         public AudioDeviceListItem(IAudioDevice device)
         {
             InitializeComponent();
 
-            NameLabel.Content = device.FriendlyName;
+            UpdateDeviceState(device, device.DeviceState);
+        }
+
+        private void AudioController_DeviceStateChanged(object sender, DeviceStateChangedEvent e)
+        {
+            if (e.device.Id == AudioDevice.Id)
+            {
+                this.Dispatcher.BeginInvoke(
+                    System.Windows.Threading.DispatcherPriority.Background, 
+                    new DispatcherOperationCallback(delegate
+                    {
+                        UpdateDeviceState(e.device, e.newState);
+                        return null;
+                    }), 
+                    null);
+            }
+        }
+
+        private void UpdateDeviceState(IAudioDevice device, DeviceState state)
+        {
+            this.IsEnabled = state == DeviceState.Active;
+            this.AudioDevice = device;
 
             try
             {
@@ -39,7 +61,32 @@ namespace QAudioSwitch
                 // Disregard errors -- we'll just have to make do without an image
             }
 
-            AudioDevice = device;
+            string stateString = "";
+            switch (state)
+            {
+                case DeviceState.Disabled:
+                    stateString = " [Disabled]";
+                    break;
+                case DeviceState.Unplugged:
+                case DeviceState.NotPresent:
+                    stateString = " [Disconnected]";
+                    break;
+                default: break;
+            }
+
+            this.NameLabel.Content = $"{device.FriendlyName}{stateString}";
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Monitor the status of this device
+            AudioController.DeviceStateChanged += AudioController_DeviceStateChanged;
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // Unsubscribe from the device notifications
+            AudioController.DeviceStateChanged -= AudioController_DeviceStateChanged;
         }
     }
 }
