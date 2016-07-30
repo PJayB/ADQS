@@ -9,18 +9,18 @@
         Height="350" Width="525" 
         Padding="0"
         Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" 
-        BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" 
+        BorderBrush="{x:Null}" 
         Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"
-        BorderThickness="2"
+        BorderThickness="0"
         Topmost="True" 
         WindowStartupLocation="CenterScreen" 
         ResizeMode="NoResize" 
         WindowStyle="None">
     <Window.Resources>
         <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
-            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"/>
-            <Setter Property="BorderBrush" Value="{x:Null}"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property="Margin" Value="0"/>
         </Style>
