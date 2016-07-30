@@ -44,7 +44,7 @@ namespace QAudioSwitch
             AudioController.DeviceDefaultChanged += AudioController_DeviceDefaultChanged;
         }
 
-        private void SelectNextActive()
+        public void SelectNextActive()
         {
             ActivePlaybackDevicesListBox.SelectedIndex = (ActivePlaybackDevicesListBox.SelectedIndex + 1) % ActivePlaybackDevicesListBox.Items.Count;
         }
@@ -170,21 +170,6 @@ namespace QAudioSwitch
                 MessageBox.Show("There was an error setting this audio device as the default for playback. " + ex.Message,
                     "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-        private void ActivePlaybackDevicesListBox_KeyUp(object sender, KeyEventArgs e)
-        {
-            // Close the window on Windows key up
-            if (e.Key == Key.LWin || e.Key == Key.RWin || e.Key == Key.LeftAlt || e.Key == Key.RightAlt)
-                this.Close();
-
-            // Move the selection on by one
-            if (e.Key == Key.Space)
-                SelectNextActive();
-         
-            // Close the window on ESC   
-            if (e.Key == Key.Escape)
-                Close();
         }
 
         // Hide but never close

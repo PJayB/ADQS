@@ -50,6 +50,13 @@ namespace QAudioSwitch
 
         private void _keyMonitor_KeyDown(object sender, KeyMonitor.KeyEventArgs e)
         {
+            Utils.ScheduleUIAction(this.Dispatcher, delegate
+            {
+                if (_mainWindow.Visibility == Visibility.Visible)
+                {
+                    _mainWindow.SelectNextActive();
+                }
+            });
         }
     }
 }

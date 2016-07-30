@@ -59,7 +59,6 @@
     <ListBox 
         x:Name="ActivePlaybackDevicesListBox" 
         SelectionChanged="ActivePlaybackDevicesListBox_SelectionChanged" 
-        KeyUp="ActivePlaybackDevicesListBox_KeyUp" 
         Style="{StaticResource ListBoxStyle}">
         <ListBox.Resources>
             <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemStyle}"/>
