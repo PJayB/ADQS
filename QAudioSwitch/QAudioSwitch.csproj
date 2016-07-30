@@ -95,6 +95,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AudioSwitchQ.cs" />
     <Compile Include="HotKey.cs" />
     <Compile Include="KeyMonitor.cs" />
     <Compile Include="Utils.cs" />

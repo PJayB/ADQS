@@ -22,8 +22,12 @@ namespace QAudioSwitch
     /// </summary>
     public partial class MainWindow : Window
     {
+        AudioSwitchQ _audioSwitchQueue;
+
         public MainWindow()
         {
+            _audioSwitchQueue = new AudioSwitchQ();
+
             InitializeComponent();
 
             ActivePlaybackDevicesListBox.Items.Clear();
@@ -163,7 +167,8 @@ namespace QAudioSwitch
 
             try
             {
-                device.SetAsDefault(Role.Multimedia);
+                // Enqueue a switch event
+                _audioSwitchQueue.Push(device);
             }
             catch (Exception ex)
             {
