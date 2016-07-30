@@ -22,6 +22,6 @@
                 </Style>
             </Image.Style>
         </Image>
-        <Label Grid.Column="1" x:Name="NameLabel" Content="Device Name" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Grid.Column="1" x:Name="NameLabel" Content="Device Name" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
     </Grid>
 </UserControl>

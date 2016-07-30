@@ -26,6 +26,8 @@ namespace QAudioSwitch
         {
             InitializeComponent();
 
+            ActivePlaybackDevicesListBox.Items.Clear();
+
             foreach (var device in AudioController.GetActivePlaybackDevices())
             {
                 ActivePlaybackDevicesListBox.Items.Add(new AudioDeviceListItem(device));
@@ -178,6 +180,10 @@ namespace QAudioSwitch
             if (e.Key == Key.Space)
             {
                 SelectNextActive();
+            }
+            if (e.Key == Key.Escape)
+            {
+                Close();
             }
         }
     }

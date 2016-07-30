@@ -5,8 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QAudioSwitch"
         mc:Ignorable="d"
-        Title="Audio Device Quick-Switcher" Height="350" Width="525">
-    <Grid>
-        <ListBox x:Name="ActivePlaybackDevicesListBox" SelectionChanged="ActivePlaybackDevicesListBox_SelectionChanged" KeyUp="ActivePlaybackDevicesListBox_KeyUp"/>
-    </Grid>
+        Title="Audio Device Quick-Switcher" 
+        Height="350" Width="525" 
+        Padding="0"
+        Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" 
+        BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" 
+        Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"
+        BorderThickness="2"
+        Topmost="True" 
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize" 
+        WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+        </Style>
+        <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Name="Border" Padding="5" SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <ListBox 
+        x:Name="ActivePlaybackDevicesListBox" 
+        SelectionChanged="ActivePlaybackDevicesListBox_SelectionChanged" 
+        KeyUp="ActivePlaybackDevicesListBox_KeyUp" 
+        Style="{StaticResource ListBoxStyle}">
+        <ListBox.Resources>
+            <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemStyle}"/>
+        </ListBox.Resources>
+        <ListBoxItem Content="Hello, world!"/>
+        <ListBoxItem Content="Test"/>
+        <ListBoxItem Content="Test 2"/>
+        <ListBoxItem Content=":O"/>
+    </ListBox>
 </Window>
