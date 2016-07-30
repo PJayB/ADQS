@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QAudioSwitch", "QAudioSwitc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioSwitchCommon", "AudioSwitchCommon\AudioSwitchCommon.csproj", "{5C53E1C5-34E5-4B1D-B90E-6E4E2003C46B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QAudioSwitchConfig", "QAudioSwitchConfig\QAudioSwitchConfig.csproj", "{385ADB24-DD6F-4201-AE48-7BC1158F6C6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -73,6 +75,14 @@ Global
 		{5C53E1C5-34E5-4B1D-B90E-6E4E2003C46B}.Release|x64.Build.0 = Release|x64
 		{5C53E1C5-34E5-4B1D-B90E-6E4E2003C46B}.Release|x86.ActiveCfg = Release|x86
 		{5C53E1C5-34E5-4B1D-B90E-6E4E2003C46B}.Release|x86.Build.0 = Release|x86
+		{385ADB24-DD6F-4201-AE48-7BC1158F6C6B}.Debug|x64.ActiveCfg = Debug|x64
+		{385ADB24-DD6F-4201-AE48-7BC1158F6C6B}.Debug|x64.Build.0 = Debug|x64
+		{385ADB24-DD6F-4201-AE48-7BC1158F6C6B}.Debug|x86.ActiveCfg = Debug|x86
+		{385ADB24-DD6F-4201-AE48-7BC1158F6C6B}.Debug|x86.Build.0 = Debug|x86
+		{385ADB24-DD6F-4201-AE48-7BC1158F6C6B}.Release|x64.ActiveCfg = Release|x64
+		{385ADB24-DD6F-4201-AE48-7BC1158F6C6B}.Release|x64.Build.0 = Release|x64
+		{385ADB24-DD6F-4201-AE48-7BC1158F6C6B}.Release|x86.ActiveCfg = Release|x86
+		{385ADB24-DD6F-4201-AE48-7BC1158F6C6B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
