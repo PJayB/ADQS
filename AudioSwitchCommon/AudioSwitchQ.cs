@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace QAudioSwitch
+namespace AudioSwitchCommon
 {
-    class AudioSwitchQ : IDisposable
+    public class AudioSwitchQ : IDisposable
     {
         Thread _thread;
         volatile bool _running;

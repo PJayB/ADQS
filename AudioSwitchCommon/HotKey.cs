@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Interop;
 
-namespace QAudioSwitch
+namespace AudioSwitchCommon
 {
-    class HotKey : IDisposable
+    public class HotKey : IDisposable
     {
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, UInt32 fsModifiers, UInt32 vlc);

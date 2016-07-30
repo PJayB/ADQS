@@ -9,9 +9,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace QAudioSwitch
+namespace AudioSwitchCommon
 {
-    class KeyMonitor : IDisposable
+    public class KeyMonitor : IDisposable
     {
         private static class WorkerThread
         {
