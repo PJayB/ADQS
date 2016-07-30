@@ -22,7 +22,6 @@
         <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="Background" Value="{x:Null}"/>
-            <!--<Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>-->
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property="Margin" Value="0"/>
@@ -31,14 +30,23 @@
             <Setter Property="ScrollViewer.Padding" Value="0"/>
             <Setter Property="ScrollViewer.Margin" Value="0"/>
             <Setter Property="ScrollViewer.BorderThickness" Value="0"/>
+            <Setter Property="Border.Padding" Value="0"/>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <Border BorderBrush="{TemplateBinding Border.BorderBrush}" BorderThickness="{TemplateBinding Border.BorderThickness}" Name="Bd" Background="{TemplateBinding Panel.Background}" SnapsToDevicePixels="True" Padding="0">
+                            <ScrollViewer Focusable="False" Padding="{TemplateBinding Control.Padding}">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <!--<Setter Property="Background" Value="{x:Null}"/>-->
-            <!--<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>-->
-            <!--<Setter Property="BorderBrush" Value="{x:Null}"/>-->
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Margin" Value="0,5"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
             <Setter Property="Template">
                 <Setter.Value>

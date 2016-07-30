@@ -19,7 +19,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" x:Name="IconImage" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Image Grid.Column="0" x:Name="IconImage" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3">
             <Image.Style>
                 <Style TargetType="Image">
                     <Style.Triggers>
