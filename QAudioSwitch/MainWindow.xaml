@@ -10,9 +10,8 @@
         SizeToContent="Height"
         Padding="0"
         Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" 
-        BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" 
-        Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"
-        BorderThickness="2"
+        BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"         
+        BorderThickness="0" Margin="0"
         Topmost="True" 
         WindowStartupLocation="CenterScreen" 
         ResizeMode="NoResize" 
@@ -23,8 +22,8 @@
         <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="Background" Value="{x:Null}"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="2"/>
+            <!--<Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>-->
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property="Margin" Value="0"/>
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
@@ -35,11 +34,12 @@
         </Style>
         <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="Background" Value="{x:Null}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
-            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <!--<Setter Property="Background" Value="{x:Null}"/>-->
+            <!--<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>-->
+            <!--<Setter Property="BorderBrush" Value="{x:Null}"/>-->
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Margin" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
@@ -48,7 +48,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

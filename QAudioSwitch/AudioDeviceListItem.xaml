@@ -5,7 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QAudioSwitch"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="300" Unloaded="UserControl_Unloaded" Loaded="UserControl_Loaded">
+             d:DesignHeight="50" d:DesignWidth="300" 
+             Unloaded="UserControl_Unloaded" 
+             Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <Style x:Key="MyLabelStyle" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/><!-- {Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Foreground}"/>-->
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </UserControl.Resources>
     <Grid Margin="3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -22,6 +30,6 @@
                 </Style>
             </Image.Style>
         </Image>
-        <Label Grid.Column="1" x:Name="NameLabel" Content="Device Name" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Label Grid.Column="1" x:Name="NameLabel" Style="{StaticResource MyLabelStyle}" Content="Device Name" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>
