@@ -10,7 +10,7 @@
              Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <Style x:Key="MyLabelStyle" TargetType="{x:Type Label}">
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/><!-- {Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=Foreground}"/>-->
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
     </UserControl.Resources>
