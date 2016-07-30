@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using AudioEndPointControllerWrapper;
+using AudioSwitchCommon;
 using System.Windows.Threading;
 
 namespace QAudioSwitch
@@ -36,7 +37,7 @@ namespace QAudioSwitch
         {
             if (e.device.Id == AudioDevice.Id)
             {
-                Utils.ScheduleUIAction(Dispatcher, delegate
+                UI.ScheduleAction(Dispatcher, delegate
                     {
                         UpdateDeviceState(e.device, e.newState);
                     });

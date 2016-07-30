@@ -98,7 +98,6 @@
     <Compile Include="AudioSwitchQ.cs" />
     <Compile Include="HotKey.cs" />
     <Compile Include="KeyMonitor.cs" />
-    <Compile Include="Utils.cs" />
     <Page Include="AudioDeviceListItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,7 +113,6 @@
     <Compile Include="AudioDeviceListItem.xaml.cs">
       <DependentUpon>AudioDeviceListItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IconResourceCache.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -151,6 +149,10 @@
     <ProjectReference Include="..\AudioEndPointLibrary\Audio.EndPoint.Controller.Wrapper\Audio.EndPoint.Controller.Wrapper.vcxproj">
       <Project>{115bf2b4-b3be-446d-ba76-348e274258f7}</Project>
       <Name>Audio.EndPoint.Controller.Wrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AudioSwitchCommon\AudioSwitchCommon.csproj">
+      <Project>{5c53e1c5-34e5-4b1d-b90e-6e4e2003c46b}</Project>
+      <Name>AudioSwitchCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

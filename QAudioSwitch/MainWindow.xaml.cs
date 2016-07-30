@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using AudioEndPointControllerWrapper;
+using AudioSwitchCommon;
 
 namespace QAudioSwitch
 {
@@ -118,7 +119,7 @@ namespace QAudioSwitch
 
         private void AudioController_DeviceStateChanged(object sender, DeviceStateChangedEvent e)
         {
-            Utils.ScheduleUIAction(Dispatcher, delegate
+            UI.ScheduleAction(Dispatcher, delegate
             {
                 if (e.newState == DeviceState.Active)
                     AddAudioDevice(e.device);
@@ -129,7 +130,7 @@ namespace QAudioSwitch
 
         private void AudioController_DeviceAdded(object sender, DeviceAddedEvent e)
         {
-            Utils.ScheduleUIAction(Dispatcher, delegate
+            UI.ScheduleAction(Dispatcher, delegate
             {
                 AddAudioDevice(e.device);
             });            
@@ -137,7 +138,7 @@ namespace QAudioSwitch
 
         private void AudioController_DeviceRemoved(object sender, DeviceRemovedEvent e)
         {
-            Utils.ScheduleUIAction(Dispatcher, delegate
+            UI.ScheduleAction(Dispatcher, delegate
             {
                 RemoveAudioDevice(e.device);
             });
@@ -145,7 +146,7 @@ namespace QAudioSwitch
 
         private void AudioController_DeviceDefaultChanged(object sender, DeviceDefaultChangedEvent e)
         {
-            Utils.ScheduleUIAction(Dispatcher, delegate
+            UI.ScheduleAction(Dispatcher, delegate
             {
                 ListUpdated();
             });

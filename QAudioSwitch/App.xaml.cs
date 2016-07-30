@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using AudioSwitchCommon;
 
 namespace QAudioSwitch
 {
@@ -39,7 +40,7 @@ namespace QAudioSwitch
 
         private void _keyMonitor_KeyUp(object sender, KeyMonitor.KeyEventArgs e)
         {
-            Utils.ScheduleUIAction(this.Dispatcher, delegate
+            UI.ScheduleAction(this.Dispatcher, delegate
             {
                 if (_mainWindow.Visibility == Visibility.Visible)
                 {
@@ -50,7 +51,7 @@ namespace QAudioSwitch
 
         private void _keyMonitor_KeyDown(object sender, KeyMonitor.KeyEventArgs e)
         {
-            Utils.ScheduleUIAction(this.Dispatcher, delegate
+            UI.ScheduleAction(this.Dispatcher, delegate
             {
                 if (_mainWindow.Visibility == Visibility.Visible)
                 {

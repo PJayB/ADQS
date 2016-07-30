@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace QAudioSwitch
+namespace AudioSwitchCommon
 {
-    static class IconResourceCache
+    public static class IconResourceCache
     {
         struct IconHandle
         {

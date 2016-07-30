@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace QAudioSwitch
+namespace AudioSwitchCommon
 {
-    static class Utils
+    public static class UI
     {
-        public static void ScheduleUIAction(Dispatcher dispatcher, Action operation, DispatcherPriority priority = DispatcherPriority.Background)
+        public static void ScheduleAction(Dispatcher dispatcher, Action operation, DispatcherPriority priority = DispatcherPriority.Background)
         {
             dispatcher.BeginInvoke(
                 System.Windows.Threading.DispatcherPriority.Background,
