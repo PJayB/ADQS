@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 
 namespace QAudioSwitch
@@ -8,6 +9,9 @@ namespace QAudioSwitch
     /// </summary>
     public partial class App : Application
     {
+        KeyMonitor _spaceKey;
+        KeyMonitor _laltKey;
+        KeyMonitor _lwinKey;
         HotKey _activationHotKey;
         MainWindow _mainWindow;
 
@@ -25,13 +29,27 @@ namespace QAudioSwitch
                 }
             });
 
-            Exit += App_Exit;
+            _spaceKey = new KeyMonitor(Key.Space);
+            _spaceKey.KeyDown += _keyMonitor_KeyDown;
+            _laltKey = new KeyMonitor(Key.LeftAlt);
+            _laltKey.KeyUp += _keyMonitor_KeyUp;
+            _lwinKey = new KeyMonitor(Key.LWin);
+            _lwinKey.KeyUp += _keyMonitor_KeyUp;
         }
 
-        private void App_Exit(object sender, ExitEventArgs e)
+        private void _keyMonitor_KeyUp(object sender, KeyMonitor.KeyEventArgs e)
         {
-            // Unregister the hot key
-            _activationHotKey = null;
+            Utils.ScheduleUIAction(this.Dispatcher, delegate
+            {
+                if (_mainWindow.Visibility == Visibility.Visible)
+                {
+                    _mainWindow.Close();
+                }
+            });
+        }
+
+        private void _keyMonitor_KeyDown(object sender, KeyMonitor.KeyEventArgs e)
+        {
         }
     }
 }

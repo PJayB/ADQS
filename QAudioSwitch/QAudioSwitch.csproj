@@ -96,6 +96,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="HotKey.cs" />
+    <Compile Include="KeyMonitor.cs" />
     <Compile Include="Utils.cs" />
     <Page Include="AudioDeviceListItem.xaml">
       <SubType>Designer</SubType>
