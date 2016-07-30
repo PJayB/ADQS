@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("QAudioSwitch")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Audio Device Quick-Switcher")]
+[assembly: AssemblyDescription("Quickly switch your default audio device with a keyboard shortcut")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("QAudioSwitch")]
+[assembly: AssemblyCompany("Pete Lewis")]
+[assembly: AssemblyProduct("AudioDeviceQS")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -42,8 +42,6 @@ namespace QAudioSwitch
             AudioController.DeviceRemoved += AudioController_DeviceRemoved;
             AudioController.DeviceStateChanged += AudioController_DeviceStateChanged;
             AudioController.DeviceDefaultChanged += AudioController_DeviceDefaultChanged;
-
-            ActivePlaybackDevicesListBox.Focus();
         }
 
         private void SelectNextActive()
@@ -62,7 +60,7 @@ namespace QAudioSwitch
                 // Make sure it isn't already in the list
                 for (int i = 0; i < items.Count; ++i)
                 {
-                    AudioDeviceListItem item = (AudioDeviceListItem)items[i];
+                    AudioDeviceListItem item = items[i] as AudioDeviceListItem;
                     if (item != null && item.AudioDevice != null && item.AudioDevice.IsDefault(Role.Multimedia))
                     {
                         ActivePlaybackDevicesListBox.SelectedItem = item;
@@ -82,7 +80,7 @@ namespace QAudioSwitch
                 // Make sure it isn't already in the list
                 for (int i = 0; i < items.Count; ++i)
                 {
-                    AudioDeviceListItem item = (AudioDeviceListItem)items[i];
+                    AudioDeviceListItem item = items[i] as AudioDeviceListItem;
                     if (item != null && item.AudioDevice != null && item.AudioDevice.Id == device.Id)
                     {
                         return;
@@ -102,7 +100,7 @@ namespace QAudioSwitch
             var items = ActivePlaybackDevicesListBox.Items;
             for (int i = 0; i < items.Count; ++i)
             {
-                AudioDeviceListItem item = (AudioDeviceListItem)items[i];
+                AudioDeviceListItem item = items[i] as AudioDeviceListItem;
                 if (item != null && item.AudioDevice != null && item.AudioDevice.Id == device.Id)
                 {
                     items.RemoveAt(i--);
@@ -154,7 +152,7 @@ namespace QAudioSwitch
             if (e.AddedItems.Count == 0)
                 return;
 
-            AudioDeviceListItem item = (AudioDeviceListItem) e.AddedItems[0];
+            AudioDeviceListItem item = e.AddedItems[0] as AudioDeviceListItem;
             if (item == null)
                 return;
 
@@ -176,15 +174,34 @@ namespace QAudioSwitch
 
         private void ActivePlaybackDevicesListBox_KeyUp(object sender, KeyEventArgs e)
         {
+            // Close the window on Windows key up
+            if (e.Key == Key.LWin || e.Key == Key.RWin || e.Key == Key.LeftAlt || e.Key == Key.RightAlt)
+                this.Close();
+
             // Move the selection on by one
             if (e.Key == Key.Space)
-            {
                 SelectNextActive();
-            }
+         
+            // Close the window on ESC   
             if (e.Key == Key.Escape)
-            {
                 Close();
-            }
+        }
+
+        // Hide but never close
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+            e.Cancel = true;
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            ActivePlaybackDevicesListBox.Focus();
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

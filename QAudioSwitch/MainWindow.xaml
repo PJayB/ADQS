@@ -6,23 +6,32 @@
         xmlns:local="clr-namespace:QAudioSwitch"
         mc:Ignorable="d"
         Title="Audio Device Quick-Switcher" 
-        Height="350" Width="525" 
+        Width="525" 
+        SizeToContent="Height"
         Padding="0"
         Background="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" 
-        BorderBrush="{x:Null}" 
+        BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" 
         Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"
-        BorderThickness="0"
+        BorderThickness="2"
         Topmost="True" 
         WindowStartupLocation="CenterScreen" 
         ResizeMode="NoResize" 
-        WindowStyle="None">
+        WindowStyle="None" 
+        Closing="Window_Closing" 
+        Activated="Window_Activated" Deactivated="Window_Deactivated">
     <Window.Resources>
         <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
             <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property="Margin" Value="0"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.Padding" Value="0"/>
+            <Setter Property="ScrollViewer.Margin" Value="0"/>
+            <Setter Property="ScrollViewer.BorderThickness" Value="0"/>
         </Style>
         <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
