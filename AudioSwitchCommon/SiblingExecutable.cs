@@ -7,6 +7,16 @@ namespace AudioSwitchCommon
 {
     public class SiblingExecutable
     {
+        public const string BackgroundServiceName = "QAudioSwitch";
+        public const string BackgroundServiceExecutableName = BackgroundServiceName + ".exe";
+        public const string ConfigurationAppName = "QAudioSwitchConfig";
+        public const string ConfigurationAppExecutableName = ConfigurationAppName + ".exe";
+
+#if DEBUG
+        public const string BackgroundServiceExecutableDebugName = BackgroundServiceName + ".vshost.exe";
+        public const string ConfigurationAppExecutableDebugName = ConfigurationAppName + ".vshost.exe";
+#endif
+
         public static string GetSiblingPath(string name)
         {
             // Get the current application's path

@@ -150,7 +150,7 @@ namespace QAudioSwitchConfig
 
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to exit QAudioSwitch entirely?", "Exit Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Are you sure you want to exit {SiblingExecutable.BackgroundServiceName} entirely?", "Exit Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 if (_settingsHaveChanged)
                 {

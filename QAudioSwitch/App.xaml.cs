@@ -12,7 +12,7 @@ namespace QAudioSwitch
     public partial class App : Application
     {
         const string c_AppName = "Audio Device Quick-Switcher";
-        const string c_AppID = "QAudioSwitch-{505CC275-FFD4-4ACA-BFE8-6CAC31C19586}";
+        const string c_AppID = "ADQSBackgroundService-{505CC275-FFD4-4ACA-BFE8-6CAC31C19586}";
 
         KeyMonitor _spaceKey;
         KeyMonitor _laltKey;
@@ -90,7 +90,7 @@ namespace QAudioSwitch
 #if DEBUG
         private void _qKey_KeyDown(object sender, KeyMonitor.KeyEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to quit QAudioSwitch?", "Confirm Exit", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Are you sure you want to quit {c_AppName}?", "Confirm Exit", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Environment.Exit(0);
             }
@@ -100,7 +100,7 @@ namespace QAudioSwitch
         {
             try
             {
-                SiblingExecutable.SpawnSibling("QAudioSwitchConfig.exe");
+                SiblingExecutable.SpawnSibling(SiblingExecutable.ConfigurationAppExecutableName);
             }
             catch (Exception ex)
             {

@@ -16,11 +16,11 @@ namespace QAudioSwitchConfig
     /// </summary>
     public partial class App : Application
     {
-        public const string c_SiblingExeName = "QAudioSwitch.exe";
+        public const string c_SiblingExeName = SiblingExecutable.BackgroundServiceExecutableName;
 #if DEBUG
-        const string c_SiblingExeNameDebug = "QAudioSwitch.vshost.exe";
+        const string c_SiblingExeNameDebug = SiblingExecutable.BackgroundServiceExecutableDebugName;
 #endif
-        const string c_AppID = "QAudioSwitchConfig-{505CC275-FFD4-4ACA-BFE8-6CAC31C19586}";
+        const string c_AppID = "ADQSConfig-{505CC275-FFD4-4ACA-BFE8-6CAC31C19586}";
 
         HotKey _disabledHotKey;
         UniqueInstance _instanceToken;
@@ -91,7 +91,7 @@ namespace QAudioSwitchConfig
                 }
                     catch (Exception)
                 {
-                    MessageBox.Show("Unable to restart the QAudioSwitch service. You will have to manually restart it.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show($"Unable to restart the {SiblingExecutable.BackgroundServiceName} service. You will have to manually restart it.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
 
