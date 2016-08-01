@@ -8,14 +8,14 @@
              d:DesignHeight="50" d:DesignWidth="300"
              Width="300"
              Unloaded="UserControl_Unloaded" 
-             Loaded="UserControl_Loaded">
+             Loaded="UserControl_Loaded" ToolTip="{Binding Content, ElementName=NameLabel}">
     <UserControl.Resources>
-        <Style x:Key="MyLabelStyle" TargetType="{x:Type Label}">
+        <Style x:Key="MyLabelStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Padding" Value="0"/>
         </Style>
         <Style x:Key="SubLabelStyle" TargetType="{x:Type Label}">
-            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontSize" Value="11"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.InactiveCaptionTextColor}}"/>
         </Style>
@@ -38,9 +38,9 @@
                 </Style>
             </Image.Style>
         </Image>
-        <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Label x:Name="NameLabel" Style="{StaticResource MyLabelStyle}" Content="Device Name"/>
-            <Label x:Name="StatusLabel" Style="{StaticResource SubLabelStyle}" Content="Device Status"/>
+        <StackPanel Grid.Column="2" VerticalAlignment="Center">
+            <TextBlock x:Name="NameLabel" Style="{StaticResource MyLabelStyle}" Text="Device Name" HorizontalAlignment="Left" TextTrimming="CharacterEllipsis"/>
+            <Label x:Name="StatusLabel" Style="{StaticResource SubLabelStyle}" Content="Device Status" HorizontalAlignment="Left" />
         </StackPanel>
     </Grid>
 </UserControl>

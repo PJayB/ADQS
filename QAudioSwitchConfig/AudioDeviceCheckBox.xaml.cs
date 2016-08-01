@@ -112,7 +112,7 @@ namespace QAudioSwitchConfig
                 name = device.Description;
             }
 
-            this.NameLabel.Content = name;
+            this.NameLabel.Text = name;
             this.StatusLabel.Content = stateString;
         }
 
