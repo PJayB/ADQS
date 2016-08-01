@@ -27,6 +27,7 @@ namespace QAudioSwitchConfig
         Configuration _config;
         AudioSwitchQ _switchQ;
         HashSet<string> _knownDevices = new HashSet<string>();
+        bool _settingsHaveChanged = false;
 
         private void AddAudioDevice(IAudioDevice device)
         {
@@ -71,6 +72,8 @@ namespace QAudioSwitchConfig
             RunOnStartUpCheckBox.IsChecked = RunOnStartUp.IsEnabled;
 
             _switchQ = new AudioSwitchQ();
+
+            _settingsHaveChanged = false;
         }
 
         private void AudioController_DeviceAdded(object sender, DeviceAddedEvent e)
@@ -89,6 +92,8 @@ namespace QAudioSwitchConfig
             {
                 _config.ExclusionIDs.Add(checkBox.AudioDevice.Id);
             }
+
+            _settingsHaveChanged = true;
         }
 
         private void SaveConfig()
@@ -141,6 +146,40 @@ namespace QAudioSwitchConfig
         private void Window_Closed(object sender, EventArgs e)
         {
             _switchQ.Dispose();
+        }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to exit QAudioSwitch entirely?", "Exit Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                if (_settingsHaveChanged)
+                {
+                    var msgResult = MessageBox.Show("Do you want to save your settings?", "Exit Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+
+                    if (msgResult == MessageBoxResult.Cancel)
+                    {
+                        return;
+                    }
+
+                    if (msgResult == MessageBoxResult.Yes)
+                    {
+                        SaveConfig();
+                    }
+                }
+
+                App.RestartServiceOnExit = false;
+                this.Close();
+            }
+        }
+
+        private void RunOnStartUpCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            _settingsHaveChanged = true;
+        }
+
+        private void RunOnStartUpCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            _settingsHaveChanged = true;
         }
     }
 }

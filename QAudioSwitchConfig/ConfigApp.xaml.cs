@@ -25,6 +25,8 @@ namespace QAudioSwitchConfig
         HotKey _disabledHotKey;
         UniqueInstance _instanceToken;
 
+        public static bool RestartServiceOnExit = true;
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             // If the application is already running, abort
@@ -81,16 +83,16 @@ namespace QAudioSwitchConfig
             }
 
             // Resume the service
-            try
+            if (RestartServiceOnExit)
             {
-#if DEBUG
-                if (MessageBox.Show("Do you want to restart the service?", "Restart?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-#endif
+                try
+                {
                     SiblingExecutable.SpawnSibling(c_SiblingExeName);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Unable to restart the QAudioSwitch service. You will have to manually restart it.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                    catch (Exception)
+                {
+                    MessageBox.Show("Unable to restart the QAudioSwitch service. You will have to manually restart it.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
 
             // Release the unique instance

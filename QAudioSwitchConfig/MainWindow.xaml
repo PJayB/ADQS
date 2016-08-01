@@ -54,15 +54,15 @@
         </GroupBox>
         <GroupBox Header="Configuration">
             <WrapPanel>
-                <CheckBox x:Name="RunOnStartUpCheckBox" Content="Run on Windows Start-Up"/>
+                <CheckBox x:Name="RunOnStartUpCheckBox" Content="Run on Windows Start-Up" Checked="RunOnStartUpCheckBox_Checked" Unchecked="RunOnStartUpCheckBox_Unchecked"/>
             </WrapPanel>
         </GroupBox>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="589*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="QuitButton" Grid.Column="0" Content="_Unload Background App"/>
+            <Button x:Name="QuitButton" Grid.Column="0" Content="E_xit Service" Click="QuitButton_Click"/>
             <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
                 <Button x:Name="OKButton" Content="_OK" Style="{StaticResource SpacedButton}" Click="OKButton_Click"/>
                 <Button x:Name="CancelButton" Content="_Cancel" Style="{StaticResource SpacedButtonCap}" Click="CancelButton_Click"/>
