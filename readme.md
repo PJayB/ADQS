@@ -1,5 +1,24 @@
-Issues
-======
+QAudioSwitch
+============
 
-* Need to move window to bottom right of current monitor.
-* Need a configuration page to allow users to select a different hotkey, optionally hide inputs and quit the application.
+This is a work in progress.
+
+Usage
+-----
+
+* Use Win+Alt+Space to switch Audio Device
+
+Issues
+------
+
+None reported.
+
+Backlog
+-------
+
+* Installer
+* ReadMe
+* Hot-key rebinding
+* Code cleanup
+* Standardize product naming
+* Help
