@@ -14,10 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using AudioEndPointControllerWrapper;
-using AudioSwitchCommon;
+using ADQSCommon;
 using System.Reflection;
 
-namespace QAudioSwitchConfig
+namespace ADQSConfigApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

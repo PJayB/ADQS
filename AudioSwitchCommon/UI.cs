@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace AudioSwitchCommon
+namespace ADQSCommon
 {
     public static class UI
     {

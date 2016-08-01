@@ -3,9 +3,9 @@ using System.Windows;
 using System.Windows.Controls;
 
 using AudioEndPointControllerWrapper;
-using AudioSwitchCommon;
+using ADQSCommon;
 
-namespace QAudioSwitchConfig
+namespace ADQSConfigApp
 {
     /// <summary>
     /// Interaction logic for AudioDeviceCheckBox.xaml

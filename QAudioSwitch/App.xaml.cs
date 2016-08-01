@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
-using AudioSwitchCommon;
+using ADQSCommon;
 using System.Diagnostics;
 
-namespace QAudioSwitch
+namespace ADQSBackgroundApp
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -12,7 +12,7 @@ namespace QAudioSwitch
     public partial class App : Application
     {
         const string c_AppName = "Audio Device Quick-Switcher";
-        const string c_AppID = "ADQSBackgroundService-{505CC275-FFD4-4ACA-BFE8-6CAC31C19586}";
+        const string c_AppID = "ADQSBackgroundApp-{505CC275-FFD4-4ACA-BFE8-6CAC31C19586}";
 
         KeyMonitor _spaceKey;
         KeyMonitor _laltKey;

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace AudioSwitchCommon
+namespace ADQSCommon
 {
     public class Configuration
     {

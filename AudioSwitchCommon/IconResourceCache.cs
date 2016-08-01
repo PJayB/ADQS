@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace AudioSwitchCommon
+namespace ADQSCommon
 {
     public static class IconResourceCache
     {

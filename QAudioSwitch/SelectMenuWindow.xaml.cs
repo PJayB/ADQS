@@ -5,9 +5,9 @@ using System.Windows.Controls;
 using System.Windows.Input;
 
 using AudioEndPointControllerWrapper;
-using AudioSwitchCommon;
+using ADQSCommon;
 
-namespace QAudioSwitch
+namespace ADQSBackgroundApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

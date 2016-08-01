@@ -1,12 +1,12 @@
 ﻿using Microsoft.Win32;
 using System;
 
-namespace AudioSwitchCommon
+namespace ADQSCommon
 {
     public static class RunOnStartUp
     {
         const string c_RunKeyPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
-        const string c_RunKeyName = "QAudioSwitcher";
+        const string c_RunKeyName = "ADQS";
 
         public static bool IsEnabled
         {

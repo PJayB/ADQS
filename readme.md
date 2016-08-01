@@ -1,5 +1,5 @@
-QAudioSwitch
-============
+Audio Device Quick-Switcher (ADQS)
+==================================
 
 This is a work in progress.
 
@@ -20,5 +20,4 @@ Backlog
 * ReadMe
 * Hot-key rebinding
 * Code cleanup
-* Standardize product naming
 * Help

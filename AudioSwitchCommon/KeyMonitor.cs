@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace AudioSwitchCommon
+namespace ADQSCommon
 {
     public class KeyMonitor : IDisposable
     {

@@ -3,9 +3,9 @@ using System.Windows;
 using System.Windows.Controls;
 
 using AudioEndPointControllerWrapper;
-using AudioSwitchCommon;
+using ADQSCommon;
 
-namespace QAudioSwitch
+namespace ADQSBackgroundApp
 {
     /// <summary>
     /// Interaction logic for AudioDeviceListItem.xaml

@@ -3,13 +3,13 @@ using System.IO;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace AudioSwitchCommon
+namespace ADQSCommon
 {
     public class SiblingExecutable
     {
-        public const string BackgroundServiceName = "QAudioSwitch";
+        public const string BackgroundServiceName = "ADQS";
         public const string BackgroundServiceExecutableName = BackgroundServiceName + ".exe";
-        public const string ConfigurationAppName = "QAudioSwitchConfig";
+        public const string ConfigurationAppName = "ADQSConfig";
         public const string ConfigurationAppExecutableName = ConfigurationAppName + ".exe";
 
 #if DEBUG

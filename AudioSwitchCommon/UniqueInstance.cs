@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AudioSwitchCommon
+namespace ADQSCommon
 {
     public class UniqueInstance : IDisposable
     {

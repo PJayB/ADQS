@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Interop;
 
-namespace AudioSwitchCommon
+namespace ADQSCommon
 {
     public class HotKey : IDisposable
     {
