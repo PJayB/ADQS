@@ -54,7 +54,7 @@
         </GroupBox>
         <GroupBox Header="Configuration">
             <WrapPanel>
-                <CheckBox Content="Run on Windows Start-Up"/>
+                <CheckBox x:Name="RunOnStartUpCheckBox" Content="Run on Windows Start-Up"/>
             </WrapPanel>
         </GroupBox>
         <Grid>

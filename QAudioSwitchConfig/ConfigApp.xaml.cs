@@ -82,8 +82,11 @@ namespace QAudioSwitchConfig
 
             // Resume the service
             try
-            { 
-                SiblingExecutable.SpawnSibling(c_SiblingExeName);
+            {
+#if DEBUG
+                if (MessageBox.Show("Do you want to restart the service?", "Restart?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+#endif
+                    SiblingExecutable.SpawnSibling(c_SiblingExeName);
             }
             catch (Exception)
             {

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using AudioEndPointControllerWrapper;
 using AudioSwitchCommon;
+using System.Reflection;
 
 namespace QAudioSwitchConfig
 {
@@ -67,6 +68,8 @@ namespace QAudioSwitchConfig
             
             AudioController.DeviceAdded += AudioController_DeviceAdded;
 
+            RunOnStartUpCheckBox.IsChecked = RunOnStartUp.IsEnabled;
+
             _switchQ = new AudioSwitchQ();
         }
 
@@ -88,10 +91,27 @@ namespace QAudioSwitchConfig
             }
         }
 
+        private void SaveConfig()
+        {
+            _config.Save();
+
+            bool runOnStartup = RunOnStartUpCheckBox.IsChecked.GetValueOrDefault(true);
+            if (runOnStartup)
+            {
+                Uri currentAssembly = new Uri(Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+                RunOnStartUp.Enable(currentAssembly.LocalPath);
+            }
+            else
+            {
+                RunOnStartUp.Disable();
+            }
+        }
+
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
             // Save the configuration and quit
-            _config.Save();
+            SaveConfig();
             this.Close();
         }
 
