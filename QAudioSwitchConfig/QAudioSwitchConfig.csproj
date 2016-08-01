@@ -137,9 +137,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ConfigIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="icon_configapp.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

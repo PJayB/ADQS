@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Audio Device Quick-Switcher Configuration"
         ResizeMode="NoResize"
-        SizeToContent="WidthAndHeight"
+        SizeToContent="WidthAndHeight" Icon="icon_configapp.ico" WindowStartupLocation="CenterScreen"
         >
     <Window.Resources>
         <Style TargetType="{x:Type GroupBox}">

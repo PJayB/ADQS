@@ -21,11 +21,11 @@ namespace QAudioSwitch
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SelectMenuWindow : Window
     {
         AudioSwitchQ _audioSwitchQueue;
 
-        public MainWindow()
+        public SelectMenuWindow()
         {
             _audioSwitchQueue = new AudioSwitchQ();
 

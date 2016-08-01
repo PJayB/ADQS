@@ -14,12 +14,12 @@ namespace QAudioSwitch
         KeyMonitor _laltKey;
         KeyMonitor _lwinKey;
         HotKey _activationHotKey;
-        MainWindow _mainWindow;
+        SelectMenuWindow _mainWindow;
 
         public App()
         {
             // Load the window
-            _mainWindow = new QAudioSwitch.MainWindow();
+            _mainWindow = new QAudioSwitch.SelectMenuWindow();
 
             // Register the hot key
             _activationHotKey = new HotKey(Key.Space, HotKey.ModifierFlags.Windows | HotKey.ModifierFlags.Alt, delegate(HotKey hotkey)
