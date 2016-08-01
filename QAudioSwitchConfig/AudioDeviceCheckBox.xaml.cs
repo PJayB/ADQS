@@ -16,7 +16,7 @@ namespace QAudioSwitchConfig
 
         public delegate void DeviceCheckedHandler(object sender, bool isChecked);
 
-        public event DeviceCheckedHandler OnDeviceChecked;
+        public event DeviceCheckedHandler DeviceChecked;
 
         public static readonly DependencyProperty IsAudioDeviceCheckedProperty = DependencyProperty.Register(
             "IsAudioDeviceChecked", 
@@ -30,9 +30,9 @@ namespace QAudioSwitchConfig
         private static void OnDeviceCheckedDependencyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             AudioDeviceCheckBox checkBox = (AudioDeviceCheckBox)d;
-            if (checkBox != null && checkBox.OnDeviceChecked != null)
+            if (checkBox != null && checkBox.DeviceChecked != null)
             {
-                checkBox.OnDeviceChecked(checkBox, (bool)e.NewValue);
+                checkBox.DeviceChecked(checkBox, (bool)e.NewValue);
             }
         }
 

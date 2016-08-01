@@ -35,7 +35,7 @@ namespace QAudioSwitchConfig
 
                 var checkBox = new AudioDeviceCheckBox(device, initialState);
 
-                checkBox.OnDeviceChecked += CheckBox_OnDeviceChecked;
+                checkBox.DeviceChecked += CheckBox_OnDeviceChecked;
 
                 _knownDevices.Add(device.Id);
 
