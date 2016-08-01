@@ -27,7 +27,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <CheckBox Grid.Column="0" x:Name="UserEnabledCheckBox" VerticalAlignment="Center" IsChecked="{Binding IsAudioDeviceChecked, ElementName=userControl}" />
-        <Image Grid.Column="1" x:Name="IconImage" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3">
+        <Image Grid.Column="1" x:Name="IconImage" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="3" IsEnabled="{Binding IsAudioDeviceActive, ElementName=userControl}">
             <Image.Style>
                 <Style TargetType="Image">
                     <Style.Triggers>

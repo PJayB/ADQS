@@ -18,6 +18,12 @@ namespace QAudioSwitchConfig
 
         public event DeviceCheckedHandler DeviceChecked;
 
+        public static readonly DependencyProperty IsAudioDeviceActiveProperty = DependencyProperty.Register(
+            "IsAudioDeviceActive",
+            typeof(bool),
+            typeof(AudioDeviceCheckBox),
+            new FrameworkPropertyMetadata(true));
+
         public static readonly DependencyProperty IsAudioDeviceCheckedProperty = DependencyProperty.Register(
             "IsAudioDeviceChecked", 
             typeof(bool),
@@ -41,7 +47,13 @@ namespace QAudioSwitchConfig
             get { return (bool)GetValue(IsAudioDeviceCheckedProperty); }
             set { SetValue(IsAudioDeviceCheckedProperty, value); }
         }
-        
+
+        public bool IsAudioDeviceActive
+        {
+            get { return (bool)GetValue(IsAudioDeviceActiveProperty); }
+            private set { SetValue(IsAudioDeviceActiveProperty, value); }
+        }
+
         public AudioDeviceCheckBox(IAudioDevice device, bool initialCheckedState)
         {
             InitializeComponent();
@@ -64,7 +76,7 @@ namespace QAudioSwitchConfig
 
         private void UpdateDeviceState(IAudioDevice device, DeviceState state)
         {
-            this.IsEnabled = state == DeviceState.Active;
+            this.IsAudioDeviceActive = state == DeviceState.Active;
             this.AudioDevice = device;
 
             try
