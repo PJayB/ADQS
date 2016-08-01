@@ -5,8 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QAudioSwitchConfig"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="Audio Device Quick-Switcher Configuration"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        >
+    <Window.Resources>
+        <Style TargetType="{x:Type GroupBox}">
+            <Setter Property="Padding" Value="7"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="MinWidth" Value="65"/>
+            <Setter Property="Padding" Value="3"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="SpacedButton">
+            <Setter Property="Margin" Value="5,5,0,5"/>
+            <Setter Property="Width" Value="65"/>
+            <Setter Property="Padding" Value="3"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="SpacedButtonCap" BasedOn="{StaticResource SpacedButton}">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <GroupBox Header="Show Audio Devices">
+            <ListBox x:Name="AudioDevicesListBox" Width="650" Height="300">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel 
+                            Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                            ItemWidth="{Binding (ListView.View).ItemWidth, RelativeSource={RelativeSource AncestorType=ListView}}"
+                            MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}"
+                            ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBoxItem Content="Hello, world!"/>
+                <ListBoxItem Content="Test"/>
+                <ListBoxItem Content="Test 2"/>
+                <ListBoxItem Content=":O"/>
+            </ListBox>
+        </GroupBox>
+        <GroupBox Header="Configuration">
+            <WrapPanel>
+                <CheckBox Content="Run on Windows Start-Up"/>
+            </WrapPanel>
+        </GroupBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="QuitButton" Grid.Column="0" Content="_Unload Background App"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                <Button x:Name="ApplyButton" Content="_Apply" Style="{StaticResource SpacedButton}"/>
+                <Button x:Name="OKButton" Content="_OK" Style="{StaticResource SpacedButton}"/>
+                <Button x:Name="CancelButton" Content="_Cancel" Style="{StaticResource SpacedButtonCap}"/>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
 </Window>

@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using AudioEndPointControllerWrapper;
+using AudioSwitchCommon;
+
 namespace QAudioSwitchConfig
 {
     /// <summary>
@@ -23,6 +26,22 @@ namespace QAudioSwitchConfig
         public MainWindow()
         {
             InitializeComponent();
+
+            AudioDevicesListBox.Items.Clear();
+
+            foreach (var device in AudioController.GetAllPlaybackDevices())
+            {
+                // TODO: logic to map visible devices 
+
+                bool initialState = device.DeviceState == DeviceState.Active;
+
+                AudioDevicesListBox.Items.Add(new AudioDeviceCheckBox(device, initialState));
+
+                if (device.IsDefault(Role.Multimedia))
+                {
+                    AudioDevicesListBox.SelectedIndex = AudioDevicesListBox.Items.Count - 1;
+                }
+            }
         }
     }
 }
