@@ -106,7 +106,13 @@ namespace QAudioSwitchConfig
                 default: break;
             }
 
-            this.NameLabel.Content = device.FriendlyName;
+            string name = device.FriendlyName;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                name = device.Description;
+            }
+
+            this.NameLabel.Content = name;
             this.StatusLabel.Content = stateString;
         }
 
