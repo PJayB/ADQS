@@ -12,6 +12,12 @@
     <UserControl.Resources>
         <Style x:Key="MyLabelStyle" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <Style x:Key="SubLabelStyle" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.InactiveCaptionTextColor}}"/>
         </Style>
     </UserControl.Resources>
     <Grid Margin="3">
@@ -32,6 +38,9 @@
                 </Style>
             </Image.Style>
         </Image>
-        <Label Grid.Column="2" x:Name="NameLabel" Style="{StaticResource MyLabelStyle}" Content="Device Name" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Label x:Name="NameLabel" Style="{StaticResource MyLabelStyle}" Content="Device Name"/>
+            <Label x:Name="StatusLabel" Style="{StaticResource SubLabelStyle}" Content="Device Status"/>
+        </StackPanel>
     </Grid>
 </UserControl>

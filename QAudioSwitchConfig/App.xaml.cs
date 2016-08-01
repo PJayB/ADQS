@@ -13,5 +13,14 @@ namespace QAudioSwitchConfig
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            // TODO: Find and kill the service
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            // TODO: Resume the service
+        }
     }
 }

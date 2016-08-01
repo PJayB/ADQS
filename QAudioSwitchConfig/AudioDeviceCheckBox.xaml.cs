@@ -14,11 +14,27 @@ namespace QAudioSwitchConfig
     {
         public IAudioDevice AudioDevice { get; private set; }
 
+        public delegate void DeviceCheckedHandler(object sender, bool isChecked);
+
+        public event DeviceCheckedHandler OnDeviceChecked;
+
         public static readonly DependencyProperty IsAudioDeviceCheckedProperty = DependencyProperty.Register(
             "IsAudioDeviceChecked", 
             typeof(bool),
             typeof(AudioDeviceCheckBox), 
-            new FrameworkPropertyMetadata(false));
+            new FrameworkPropertyMetadata(
+                false,
+                FrameworkPropertyMetadataOptions.AffectsMeasure,
+                new PropertyChangedCallback(OnDeviceCheckedDependencyChanged)));
+
+        private static void OnDeviceCheckedDependencyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            AudioDeviceCheckBox checkBox = (AudioDeviceCheckBox)d;
+            if (checkBox != null && checkBox.OnDeviceChecked != null)
+            {
+                checkBox.OnDeviceChecked(checkBox, (bool)e.NewValue);
+            }
+        }
 
         public bool IsAudioDeviceChecked 
         {
@@ -63,17 +79,23 @@ namespace QAudioSwitchConfig
             string stateString = "";
             switch (state)
             {
+                case DeviceState.Active:
+                    stateString = "Active";
+                    break;
                 case DeviceState.Disabled:
-                    stateString = " [Disabled]";
+                    stateString = "Disabled";
                     break;
                 case DeviceState.Unplugged:
+                    stateString = "Unplugged";
+                    break;
                 case DeviceState.NotPresent:
-                    stateString = " [Disconnected]";
+                    stateString = "Disconnected";
                     break;
                 default: break;
             }
 
-            this.NameLabel.Content = $"{device.FriendlyName}{stateString}";
+            this.NameLabel.Content = device.FriendlyName;
+            this.StatusLabel.Content = stateString;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

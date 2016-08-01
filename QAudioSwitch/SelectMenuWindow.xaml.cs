@@ -25,7 +25,20 @@ namespace QAudioSwitch
     {
         AudioSwitchQ _audioSwitchQueue;
 
-        public SelectMenuWindow()
+        private HashSet<string> HashList(IEnumerable<string> list)
+        {
+            HashSet<string> hash = new HashSet<string>();
+            foreach (var i in list)
+            {
+                if (!hash.Contains(i))
+                {
+                    hash.Add(i);
+                }
+            }
+            return hash;
+        }
+
+        public SelectMenuWindow(IEnumerable<string> exclusionList)
         {
             _audioSwitchQueue = new AudioSwitchQ();
 
@@ -33,13 +46,19 @@ namespace QAudioSwitch
 
             ActivePlaybackDevicesListBox.Items.Clear();
 
+            // Construct a hash set of the exlusion list
+            HashSet<string> exclusionHashSet = HashList(exclusionList);
+
             foreach (var device in AudioController.GetActivePlaybackDevices())
             {
-                ActivePlaybackDevicesListBox.Items.Add(new AudioDeviceListItem(device));
-
-                if (device.IsDefault(Role.Multimedia))
+                if (!exclusionHashSet.Contains(device.Id))
                 {
-                    ActivePlaybackDevicesListBox.SelectedIndex = ActivePlaybackDevicesListBox.Items.Count - 1;
+                    ActivePlaybackDevicesListBox.Items.Add(new AudioDeviceListItem(device));
+
+                    if (device.IsDefault(Role.Multimedia))
+                    {
+                        ActivePlaybackDevicesListBox.SelectedIndex = ActivePlaybackDevicesListBox.Items.Count - 1;
+                    }
                 }
             }
 

@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioSwitchQ.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="HotKey.cs" />
     <Compile Include="IconResourceCache.cs" />
     <Compile Include="KeyMonitor.cs" />

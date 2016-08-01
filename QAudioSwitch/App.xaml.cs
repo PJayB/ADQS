@@ -15,11 +15,15 @@ namespace QAudioSwitch
         KeyMonitor _lwinKey;
         HotKey _activationHotKey;
         SelectMenuWindow _mainWindow;
+        Configuration _config;
 
         public App()
         {
+            // Load the configuration file
+            _config = Configuration.Load();
+
             // Load the window
-            _mainWindow = new QAudioSwitch.SelectMenuWindow();
+            _mainWindow = new SelectMenuWindow(_config.ExclusionIDs);
 
             // Register the hot key
             _activationHotKey = new HotKey(Key.Space, HotKey.ModifierFlags.Windows | HotKey.ModifierFlags.Alt, delegate(HotKey hotkey)
@@ -31,11 +35,11 @@ namespace QAudioSwitch
             });
 
             _spaceKey = new KeyMonitor(Key.Space);
-            _spaceKey.KeyDown += _keyMonitor_KeyDown;
+            _spaceKey.OnKeyDown += _keyMonitor_KeyDown;
             _laltKey = new KeyMonitor(Key.LeftAlt);
-            _laltKey.KeyUp += _keyMonitor_KeyUp;
+            _laltKey.OnKeyUp += _keyMonitor_KeyUp;
             _lwinKey = new KeyMonitor(Key.LWin);
-            _lwinKey.KeyUp += _keyMonitor_KeyUp;
+            _lwinKey.OnKeyUp += _keyMonitor_KeyUp;
         }
 
         private void _keyMonitor_KeyUp(object sender, KeyMonitor.KeyEventArgs e)

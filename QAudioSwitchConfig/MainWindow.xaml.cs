@@ -23,25 +23,84 @@ namespace QAudioSwitchConfig
     /// </summary>
     public partial class MainWindow : Window
     {
+        Configuration _config;
+        HashSet<string> _knownDevices = new HashSet<string>();
+
+        private void AddAudioDevice(IAudioDevice device)
+        {
+            if (!_knownDevices.Contains(device.Id))
+            {
+                bool initialState = !_config.ExclusionIDs.Contains(device.Id);
+
+                var checkBox = new AudioDeviceCheckBox(device, initialState);
+
+                checkBox.OnDeviceChecked += CheckBox_OnDeviceChecked;
+
+                _knownDevices.Add(device.Id);
+
+                UI.ScheduleAction(this.Dispatcher, delegate
+                {
+                    AudioDevicesListBox.Items.Add(checkBox);
+
+                    if (device.IsDefault(Role.Multimedia))
+                    {
+                        AudioDevicesListBox.SelectedIndex = AudioDevicesListBox.Items.Count - 1;
+                    }
+                });
+            }
+        }
+
         public MainWindow()
         {
+            // Load the configuration
+            _config = Configuration.Load();
+
             InitializeComponent();
 
             AudioDevicesListBox.Items.Clear();
 
             foreach (var device in AudioController.GetAllPlaybackDevices())
             {
-                // TODO: logic to map visible devices 
-
-                bool initialState = device.DeviceState == DeviceState.Active;
-
-                AudioDevicesListBox.Items.Add(new AudioDeviceCheckBox(device, initialState));
-
-                if (device.IsDefault(Role.Multimedia))
-                {
-                    AudioDevicesListBox.SelectedIndex = AudioDevicesListBox.Items.Count - 1;
-                }
+                AddAudioDevice(device);
             }
+            
+            AudioController.DeviceAdded += AudioController_DeviceAdded;
+        }
+
+        private void AudioController_DeviceAdded(object sender, DeviceAddedEvent e)
+        {
+            AddAudioDevice(e.device);
+        }
+
+        private void CheckBox_OnDeviceChecked(object sender, bool isChecked)
+        {
+            AudioDeviceCheckBox checkBox = (AudioDeviceCheckBox) sender;
+            if (isChecked)
+            {
+                _config.ExclusionIDs.Remove(checkBox.AudioDevice.Id);
+            }
+            else
+            {
+                _config.ExclusionIDs.Add(checkBox.AudioDevice.Id);
+            }
+        }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Save the configuration 
+            _config.Save();
+        }
+
+        private void OKButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Save the configuration and quit
+            _config.Save();
+            this.Close();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
