@@ -42,3 +42,5 @@ Backlog
 * Hot-key rebinding
 * Code cleanup
 * Help
+* Tests
+
