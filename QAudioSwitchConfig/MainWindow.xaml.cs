@@ -88,12 +88,6 @@ namespace QAudioSwitchConfig
             }
         }
 
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Save the configuration 
-            _config.Save();
-        }
-
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
             // Save the configuration and quit
@@ -112,6 +106,15 @@ namespace QAudioSwitchConfig
             if (_switchQ != null && checkBox != null && checkBox.AudioDevice.DeviceState == DeviceState.Active)
             {
                 _switchQ.Push(checkBox.AudioDevice);
+            }
+        }
+
+        private void AudioDevicesListBox_ToggleVisibility(object sender, RoutedEventArgs e)
+        {
+            AudioDeviceCheckBox checkBox = AudioDevicesListBox.SelectedItem as AudioDeviceCheckBox;
+            if (checkBox != null && checkBox.AudioDevice.DeviceState == DeviceState.Active)
+            {
+                checkBox.IsAudioDeviceChecked = !checkBox.IsAudioDeviceChecked;
             }
         }
 

@@ -35,11 +35,11 @@ namespace QAudioSwitch
             });
 
             _spaceKey = new KeyMonitor(Key.Space);
-            _spaceKey.OnKeyDown += _keyMonitor_KeyDown;
+            _spaceKey.KeyDown += _keyMonitor_KeyDown;
             _laltKey = new KeyMonitor(Key.LeftAlt);
-            _laltKey.OnKeyUp += _keyMonitor_KeyUp;
+            _laltKey.KeyUp += _keyMonitor_KeyUp;
             _lwinKey = new KeyMonitor(Key.LWin);
-            _lwinKey.OnKeyUp += _keyMonitor_KeyUp;
+            _lwinKey.KeyUp += _keyMonitor_KeyUp;
         }
 
         private void _keyMonitor_KeyUp(object sender, KeyMonitor.KeyEventArgs e)

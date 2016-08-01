@@ -195,8 +195,8 @@ namespace AudioSwitchCommon
 
         public delegate void KeyEventHandler(object sender, KeyEventArgs e);
 
-        public event KeyEventHandler OnKeyDown;
-        public event KeyEventHandler OnKeyUp;
+        public event KeyEventHandler KeyDown;
+        public event KeyEventHandler KeyUp;
 
         public bool IsDown { get { return Keyboard.IsKeyDown(Key); } }
 
@@ -226,10 +226,10 @@ namespace AudioSwitchCommon
 
         private void FireEvent(KeyEventArgs e)
         {
-            if (e.Down && OnKeyDown != null)
-                OnKeyDown(this, e);
-            else if (OnKeyUp != null)
-                OnKeyUp(this, e);
+            if (e.Down && KeyDown != null)
+                KeyDown(this, e);
+            else if (KeyUp != null)
+                KeyUp(this, e);
         }
     }
 }
