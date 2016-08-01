@@ -200,14 +200,35 @@ namespace AudioSwitchCommon
 
         public bool IsDown { get { return Keyboard.IsKeyDown(Key); } }
 
+        public static bool IsInitialized { get; private set; }
+
+        public static void Initialize()
+        {
+            if (!IsInitialized)
+            {
+                WorkerThread.Initialize();
+                LowLevelHook.Initialize();
+                IsInitialized = true;
+            }
+        }
+
+        public static void Shutdown()
+        {
+            if (IsInitialized)
+            {
+                LowLevelHook.Shutdown();
+                WorkerThread.Shutdown();
+                IsInitialized = false;
+            }
+        }
+
         public KeyMonitor(Key key)
         {
             Key = key;
 
-            if (WorkerThread.InstanceCount == 0)
+            if (!IsInitialized)
             {
-                WorkerThread.Initialize();
-                LowLevelHook.Initialize();
+                throw new InvalidOperationException("KeyMonitor is not initialized");
             }
 
             WorkerThread.AddMonitor(this);
@@ -216,12 +237,6 @@ namespace AudioSwitchCommon
         public void Dispose()
         {
             WorkerThread.RemoveMonitor(this);
-
-            if (WorkerThread.InstanceCount == 0)
-            {
-                LowLevelHook.Shutdown();
-                WorkerThread.Shutdown();
-            }
         }
 
         private void FireEvent(KeyEventArgs e)

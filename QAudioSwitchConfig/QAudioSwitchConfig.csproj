@@ -75,7 +75,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="ConfigApp.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
@@ -87,8 +87,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
+    <Compile Include="ConfigApp.xaml.cs">
+      <DependentUpon>ConfigApp.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AudioDeviceCheckBox.xaml.cs">
@@ -124,7 +124,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="ConfigApp.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AudioEndPointLibrary\Audio.EndPoint.Controller.Wrapper\Audio.EndPoint.Controller.Wrapper.vcxproj">

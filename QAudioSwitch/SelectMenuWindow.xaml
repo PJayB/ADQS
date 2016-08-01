@@ -66,24 +66,16 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <StackPanel SnapsToDevicePixels="True">
-        <ListBox 
-            x:Name="ActivePlaybackDevicesListBox" 
-            SelectionChanged="ActivePlaybackDevicesListBox_SelectionChanged" 
-            Style="{StaticResource ListBoxStyle}">
-            <ListBox.Resources>
-                <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemStyle}"/>
-            </ListBox.Resources>
-            <ListBoxItem Content="Hello, world!"/>
-            <ListBoxItem Content="Test"/>
-            <ListBoxItem Content="Test 2"/>
-            <ListBoxItem Content=":O"/>
-        </ListBox>
-        <Label 
-            HorizontalAlignment="Right" 
-            Content="Press C to launch Configuration Panel" 
-            Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" 
-            SnapsToDevicePixels="True"
-            FontSize="10" />
-    </StackPanel>
+    <ListBox 
+        x:Name="ActivePlaybackDevicesListBox" 
+        SelectionChanged="ActivePlaybackDevicesListBox_SelectionChanged" 
+        Style="{StaticResource ListBoxStyle}">
+        <ListBox.Resources>
+            <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemStyle}"/>
+        </ListBox.Resources>
+        <ListBoxItem Content="Hello, world!"/>
+        <ListBoxItem Content="Test"/>
+        <ListBoxItem Content="Test 2"/>
+        <ListBoxItem Content=":O"/>
+    </ListBox>
 </Window>

@@ -70,6 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiblingExecutable.cs" />
     <Compile Include="UI.cs" />
+    <Compile Include="UniqueInstance.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AudioEndPointLibrary\Audio.EndPoint.Controller.Wrapper\Audio.EndPoint.Controller.Wrapper.vcxproj">

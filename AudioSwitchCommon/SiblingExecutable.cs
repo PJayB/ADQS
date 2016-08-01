@@ -7,13 +7,18 @@ namespace AudioSwitchCommon
 {
     public class SiblingExecutable
     {
-        public static Process SpawnSibling(string name)
+        public static string GetSiblingPath(string name)
         {
             // Get the current application's path
             Uri currentAssembly = new Uri(Assembly.GetExecutingAssembly().GetName().CodeBase);
 
             string currentPath = Path.GetDirectoryName(currentAssembly.LocalPath);
-            string siblingPath = Path.Combine(currentPath, name);
+            return Path.Combine(currentPath, name);
+        }
+
+        public static Process SpawnSibling(string name)
+        {
+            string siblingPath = GetSiblingPath(name);
 
             if (!File.Exists(siblingPath))
             {
@@ -28,6 +33,14 @@ namespace AudioSwitchCommon
             }
 
             return process;
+        }
+
+        public static Process FindSiblingProcess(string name)
+        {
+            name = name.Replace(".exe", "");
+
+            Process[] processes = Process.GetProcessesByName(name);
+            return processes.Length > 0 ? processes[0] : null;
         }
     }
 }
