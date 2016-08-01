@@ -16,7 +16,7 @@ namespace QAudioSwitchConfig
     /// </summary>
     public partial class App : Application
     {
-        const string c_SiblingExeName = "QAudioSwitch.exe";
+        public const string c_SiblingExeName = "QAudioSwitch.exe";
 #if DEBUG
         const string c_SiblingExeNameDebug = "QAudioSwitch.vshost.exe";
 #endif

@@ -103,9 +103,9 @@ namespace QAudioSwitchConfig
             bool runOnStartup = RunOnStartUpCheckBox.IsChecked.GetValueOrDefault(true);
             if (runOnStartup)
             {
-                Uri currentAssembly = new Uri(Assembly.GetExecutingAssembly().GetName().CodeBase);
+                var exe = SiblingExecutable.GetSiblingPath(App.c_SiblingExeName);
 
-                RunOnStartUp.Enable(currentAssembly.LocalPath);
+                RunOnStartUp.Enable(exe);
             }
             else
             {
