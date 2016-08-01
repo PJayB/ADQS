@@ -17,10 +17,12 @@
         ResizeMode="NoResize" 
         WindowStyle="None" 
         Closing="Window_Closing" 
+        SnapsToDevicePixels="True"
         Activated="Window_Activated" Deactivated="Window_Deactivated">
     <Window.Resources>
         <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="0"/>
@@ -64,16 +66,24 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <ListBox 
-        x:Name="ActivePlaybackDevicesListBox" 
-        SelectionChanged="ActivePlaybackDevicesListBox_SelectionChanged" 
-        Style="{StaticResource ListBoxStyle}">
-        <ListBox.Resources>
-            <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemStyle}"/>
-        </ListBox.Resources>
-        <ListBoxItem Content="Hello, world!"/>
-        <ListBoxItem Content="Test"/>
-        <ListBoxItem Content="Test 2"/>
-        <ListBoxItem Content=":O"/>
-    </ListBox>
+    <StackPanel SnapsToDevicePixels="True">
+        <ListBox 
+            x:Name="ActivePlaybackDevicesListBox" 
+            SelectionChanged="ActivePlaybackDevicesListBox_SelectionChanged" 
+            Style="{StaticResource ListBoxStyle}">
+            <ListBox.Resources>
+                <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem" BasedOn="{StaticResource ListBoxItemStyle}"/>
+            </ListBox.Resources>
+            <ListBoxItem Content="Hello, world!"/>
+            <ListBoxItem Content="Test"/>
+            <ListBoxItem Content="Test 2"/>
+            <ListBoxItem Content=":O"/>
+        </ListBox>
+        <Label 
+            HorizontalAlignment="Right" 
+            Content="Press C to launch Configuration Panel" 
+            Foreground="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" 
+            SnapsToDevicePixels="True"
+            FontSize="10" />
+    </StackPanel>
 </Window>

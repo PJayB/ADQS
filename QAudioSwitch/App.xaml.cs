@@ -13,6 +13,7 @@ namespace QAudioSwitch
         KeyMonitor _spaceKey;
         KeyMonitor _laltKey;
         KeyMonitor _lwinKey;
+        KeyMonitor _cKey;
         HotKey _activationHotKey;
         SelectMenuWindow _mainWindow;
         Configuration _config;
@@ -30,6 +31,9 @@ namespace QAudioSwitch
             {
                 if (_mainWindow.Visibility != Visibility.Visible)
                 {
+                    _cKey = new KeyMonitor(Key.C);
+                    _cKey.KeyDown += _cKey_KeyDown;
+
                     _mainWindow.ShowDialog();
                 }
             });
@@ -42,6 +46,11 @@ namespace QAudioSwitch
             _lwinKey.KeyUp += _keyMonitor_KeyUp;
         }
 
+        private void _cKey_KeyDown(object sender, KeyMonitor.KeyEventArgs e)
+        {
+            SiblingExecutable.SpawnSibling("QAudioSwitchConfig.exe");
+        }
+
         private void _keyMonitor_KeyUp(object sender, KeyMonitor.KeyEventArgs e)
         {
             UI.ScheduleAction(this.Dispatcher, delegate
@@ -49,6 +58,8 @@ namespace QAudioSwitch
                 if (_mainWindow.Visibility == Visibility.Visible)
                 {
                     _mainWindow.Close();
+                    _cKey.Dispose();
+                    _cKey = null;
                 }
             });
         }
