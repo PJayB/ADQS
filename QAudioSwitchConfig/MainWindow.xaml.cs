@@ -24,6 +24,7 @@ namespace QAudioSwitchConfig
     public partial class MainWindow : Window
     {
         Configuration _config;
+        AudioSwitchQ _switchQ;
         HashSet<string> _knownDevices = new HashSet<string>();
 
         private void AddAudioDevice(IAudioDevice device)
@@ -65,6 +66,8 @@ namespace QAudioSwitchConfig
             }
             
             AudioController.DeviceAdded += AudioController_DeviceAdded;
+
+            _switchQ = new AudioSwitchQ();
         }
 
         private void AudioController_DeviceAdded(object sender, DeviceAddedEvent e)
@@ -101,6 +104,20 @@ namespace QAudioSwitchConfig
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void AudioDevicesListBox_SetAsDefaultNow(object sender, RoutedEventArgs e)
+        {
+            AudioDeviceCheckBox checkBox = AudioDevicesListBox.SelectedItem as AudioDeviceCheckBox;
+            if (_switchQ != null && checkBox != null && checkBox.AudioDevice.DeviceState == DeviceState.Active)
+            {
+                _switchQ.Push(checkBox.AudioDevice);
+            }
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            _switchQ.Dispose();
         }
     }
 }

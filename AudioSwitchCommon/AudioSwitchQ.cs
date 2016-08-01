@@ -47,7 +47,7 @@ namespace AudioSwitchCommon
                     device = tmp;
                 }
 
-                if (device != null)
+                if (device != null && device.Type == AudioDeviceType.Playback && device.DeviceState == DeviceState.Active)
                 {
                     device.SetAsDefault(Role.Multimedia);
                 }

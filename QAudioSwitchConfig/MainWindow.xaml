@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Audio Device Quick-Switcher Configuration"
         ResizeMode="NoResize"
-        SizeToContent="WidthAndHeight" Icon="icon_configapp.ico" WindowStartupLocation="CenterScreen"
+        SizeToContent="WidthAndHeight" Icon="icon_configapp.ico" WindowStartupLocation="CenterScreen" Closed="Window_Closed"
         >
     <Window.Resources>
         <Style TargetType="{x:Type GroupBox}">
@@ -40,6 +40,12 @@
                             ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Set as _Default Now" Click="AudioDevicesListBox_SetAsDefaultNow"/>
+                        <MenuItem Header="Toggle _Visibility" />
+                    </ContextMenu>
+                </ListBox.ContextMenu>
                 <ListBoxItem Content="Hello, world!"/>
                 <ListBoxItem Content="Test"/>
                 <ListBoxItem Content="Test 2"/>
