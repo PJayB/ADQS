@@ -16,7 +16,7 @@ namespace ADQSConfigApp
     /// </summary>
     public partial class App : Application
     {
-        public const string c_SiblingExeName = SiblingExecutable.BackgroundServiceExecutableName;
+        const string c_SiblingExeName = SiblingExecutable.BackgroundServiceExecutableName;
 #if DEBUG
         const string c_SiblingExeNameDebug = SiblingExecutable.BackgroundServiceExecutableDebugName;
 #endif

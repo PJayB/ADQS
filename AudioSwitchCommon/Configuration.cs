@@ -10,7 +10,8 @@ namespace ADQSCommon
     {
         // Constants
         public const string ConfigurationFileName = "config.xml";
-        private const string ConfigurationDirectoryName = "AudioDeviceQS";
+
+        private const string c_ConfigurationDirectoryName = "AudioDeviceQS";
         
         // Public Properties
         public List<string> ExclusionIDs = new List<string>();
@@ -20,7 +21,7 @@ namespace ADQSCommon
             get
             {
                 string directory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                return Path.Combine(directory, ConfigurationDirectoryName);
+                return Path.Combine(directory, c_ConfigurationDirectoryName);
             }
         }
 
@@ -29,7 +30,7 @@ namespace ADQSCommon
             get
             {
                 string directory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                return Path.Combine(directory, ConfigurationDirectoryName, ConfigurationFileName);
+                return Path.Combine(directory, c_ConfigurationDirectoryName, ConfigurationFileName);
             }            
         }
 

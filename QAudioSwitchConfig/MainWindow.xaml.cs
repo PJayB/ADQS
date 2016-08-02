@@ -103,7 +103,7 @@ namespace ADQSConfigApp
             bool runOnStartup = RunOnStartUpCheckBox.IsChecked.GetValueOrDefault(true);
             if (runOnStartup)
             {
-                var exe = SiblingExecutable.GetSiblingPath(App.c_SiblingExeName);
+                var exe = SiblingExecutable.GetSiblingPath(SiblingExecutable.BackgroundServiceExecutableName);
 
                 RunOnStartUp.Enable(exe);
             }
